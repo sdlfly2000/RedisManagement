@@ -7,13 +7,13 @@ using System.Diagnostics;
 namespace RedisCtl.CommandLine.Commands.Query
 {
     [ServiceLocate(typeof(ICommandDefinition))]
-    public class QueryCommandDefinition : ICommandDefinition
+    public class QueryCountCommandDefinition : ICommandDefinition
     {
         private readonly QueryService _queryService;
 
         private Option<string> _patternOption;
 
-        public QueryCommandDefinition(QueryService queryService)
+        public QueryCountCommandDefinition(QueryService queryService)
         {
             _queryService = queryService;
 
@@ -26,7 +26,7 @@ namespace RedisCtl.CommandLine.Commands.Query
 
         public Command Create()
         {
-            var queryCommand = new Command("Query", "operation on Redis")
+            var queryCommand = new Command("QueryCount", "operation on Redis")
             {
                 _patternOption
             };
@@ -45,7 +45,7 @@ namespace RedisCtl.CommandLine.Commands.Query
             Debug.Assert(!string.IsNullOrEmpty(host));
             Debug.Assert(!string.IsNullOrEmpty(accessKey));
 
-            var count = await _queryService.Query(pattern, host, accessKey, token).ConfigureAwait(false);
+            var count = await _queryService.QueryCount(pattern, host, accessKey, token).ConfigureAwait(false);
 
             Console.WriteLine($"{count}");
         }

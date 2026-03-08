@@ -7,7 +7,7 @@ namespace Application.Services.Queries
     [ServiceLocate(default)]
     public class QueryService
     {
-        public async Task<int> Query(string pattern, string host, string accessKey, CancellationToken token)
+        public async Task<int> QueryCount(string pattern, string host, string accessKey, CancellationToken token)
         {
             var queryKeyCountScript = $"return #redis.pcall('keys', '{pattern}')";
             var connectionString = $"{host},password={accessKey},ssl=true";
