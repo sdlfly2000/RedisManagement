@@ -4,7 +4,7 @@ namespace Core.RedisClient
 {
     public static class RedisConnector
     {
-        private static ConnectionMultiplexer _redisClient;
+        private static ConnectionMultiplexer? _redisClient;
         private static object _lock = new();
         public static ConnectionMultiplexer GetRedisClient(string connectionString)
         {
