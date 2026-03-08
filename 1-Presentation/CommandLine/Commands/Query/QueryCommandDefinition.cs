@@ -47,7 +47,7 @@ namespace RedisCtl.CommandLine.Commands.Query
 
             var count = await _queryService.Query(pattern, host, accessKey, token).ConfigureAwait(false);
 
-            Console.WriteLine($"Total keys matched pattern '{pattern}': {count}");
+            Console.WriteLine($"{count}");
         }
     }
 }
