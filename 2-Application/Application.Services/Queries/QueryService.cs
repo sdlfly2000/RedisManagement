@@ -10,7 +10,7 @@ namespace Application.Services.Queries
         public async Task<int> QueryCount(string pattern, string host, string accessKey, CancellationToken token)
         {
             var queryKeyCountScript = $"return #redis.pcall('keys', '{pattern}')";
-            var connectionString = $"{host},password={accessKey},ssl=true";
+            var connectionString = $"{host},password={accessKey},connectTimeout=10000,syncTimeout=10000,asyncTimeout=10000,abortConnect=false,ssl=true";
             var redisScript = LuaScript.Prepare(queryKeyCountScript);
             using var redis = RedisConnector.GetRedisClient(connectionString);
             var db = redis.GetDatabase();
