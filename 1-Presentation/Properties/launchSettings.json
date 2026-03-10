@@ -2,7 +2,7 @@
   "profiles": {
     "RedisCtl": {
       "commandName": "Project",
-      "commandLineArgs": "Query --pattern TmMQU* --host --accessKey "
+      "commandLineArgs": "QueryCount --pattern TmMQU* --host --accessKey "
     }
   }
 }
